@@ -57,8 +57,10 @@ public class NewJFrame extends javax.swing.JFrame {
         lblInfoAno.setText("Ano de Nascimento");
         getContentPane().add(lblInfoAno);
         lblInfoAno.setBounds(39, 95, 109, 18);
+
+        lblResultado.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         getContentPane().add(lblResultado);
-        lblResultado.setBounds(140, 180, 64, 30);
+        lblResultado.setBounds(130, 180, 64, 30);
 
         btnResult.setIcon(new javax.swing.ImageIcon("C:\\Users\\inque\\Documents\\NetBeansProjects\\prg03Inque\\src\\main\\java\\br\\com\\ifba\\atividade03\\imgs\\calculator_17143940 (1).png")); // NOI18N
         btnResult.setText("calcular");
