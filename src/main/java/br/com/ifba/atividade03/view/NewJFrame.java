@@ -4,6 +4,7 @@
  */
 package br.com.ifba.atividade03.view;
 import java.time.Year;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -35,6 +36,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 350));
+        setSize(new java.awt.Dimension(400, 200));
         getContentPane().setLayout(null);
 
         txtAno.addActionListener(new java.awt.event.ActionListener() {
@@ -48,16 +51,16 @@ public class NewJFrame extends javax.swing.JFrame {
         lblInfoIdade.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         lblInfoIdade.setText("Idade:");
         getContentPane().add(lblInfoIdade);
-        lblInfoIdade.setBounds(100, 187, 48, 23);
+        lblInfoIdade.setBounds(80, 190, 48, 23);
 
         lblInfoAno.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         lblInfoAno.setText("Ano de Nascimento");
         getContentPane().add(lblInfoAno);
         lblInfoAno.setBounds(39, 95, 109, 18);
         getContentPane().add(lblResultado);
-        lblResultado.setBounds(168, 103, 64, 20);
+        lblResultado.setBounds(140, 180, 64, 30);
 
-        btnResult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/atividade03/imgs/calculator_17143940 (1).png"))); // NOI18N
+        btnResult.setIcon(new javax.swing.ImageIcon("C:\\Users\\inque\\Documents\\NetBeansProjects\\prg03Inque\\src\\main\\java\\br\\com\\ifba\\atividade03\\imgs\\calculator_17143940 (1).png")); // NOI18N
         btnResult.setText("calcular");
         btnResult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +70,7 @@ public class NewJFrame extends javax.swing.JFrame {
         getContentPane().add(btnResult);
         btnResult.setBounds(80, 130, 91, 23);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/atividade03/imgs/profile_3135715.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\inque\\Documents\\NetBeansProjects\\prg03Inque\\src\\main\\java\\br\\com\\ifba\\atividade03\\imgs\\profile_3135715.png")); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(200, 80, 260, 270);
 
