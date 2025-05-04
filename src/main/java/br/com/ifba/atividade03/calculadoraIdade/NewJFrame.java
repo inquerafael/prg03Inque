@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package br.com.ifba.atividade03.view;
+package br.com.ifba.atividade03.calculadoraIdade;
 import java.time.Year;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -36,8 +35,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 350));
-        setSize(new java.awt.Dimension(400, 200));
+        setMinimumSize(new java.awt.Dimension(400, 350));
+        setSize(new java.awt.Dimension(400, 350));
         getContentPane().setLayout(null);
 
         txtAno.addActionListener(new java.awt.event.ActionListener() {
