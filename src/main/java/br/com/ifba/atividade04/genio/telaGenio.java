@@ -11,6 +11,8 @@ import javax.swing.JOptionPane; // Importa a classe para exibir caixas de diálo
  * @author inque
  */
 public class telaGenio extends javax.swing.JFrame {
+    
+    Random random = new Random(); // instancia unica
 
     /**
      * Creates new form telaGenio
@@ -77,7 +79,6 @@ public class telaGenio extends javax.swing.JFrame {
 
     private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
         // new
-        Random random = new Random();
         int num; // Declara a variável num fora do bloco try
         int numTentativas;
 
@@ -85,7 +86,7 @@ public class telaGenio extends javax.swing.JFrame {
             num = Integer.parseInt(txttentativa.getText());//pega o texto(nunmero) digitado
             numTentativas = Integer.parseInt(lblNumTentativas.getText());
 
-            int numAleatorio = random.nextInt(5);//recebe um random entre 0 e 5
+            int numAleatorio = random.nextInt(6);//recebe um random entre 0 e 5
             
             if(numTentativas > 0){
                 numTentativas--;
