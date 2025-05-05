@@ -154,10 +154,10 @@ public class frameSlider extends javax.swing.JFrame {
             contador += passo;
             if (passo <= 0 && contador >= fim) break;
             if (passo > 0 && contador > fim) break;
-            //txtAreaResultado.setModel(listModel);
+            
         }
         
-        txtAreaResultado.setText(resultado.toString()); // Define o texto da JTextArea com a String construída
+        txtAreaResultado.setText(resultado.toString()); // Defin o texto da JTextArea com a String construída
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
