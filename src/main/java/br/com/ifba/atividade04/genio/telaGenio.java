@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.com.ifba.atividade04.genio;
+import java.util.Random;
+import javax.swing.JOptionPane; // Importa a classe para exibir caixas de diálogo
 
 /**
  *
@@ -26,35 +28,112 @@ public class telaGenio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        lblFalaGenio1 = new javax.swing.JLabel();
+        lblFalaGenio2 = new javax.swing.JLabel();
+        lblFalaGenio3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        btnResultado = new javax.swing.JButton();
+        txttentativa = new javax.swing.JTextField();
+        lblInfoTentativa = new javax.swing.JLabel();
+        lblNumTentativas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+        lblFalaGenio1.setText("vou pensar...");
+        getContentPane().add(lblFalaGenio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+
+        lblFalaGenio2.setText("em um numero");
+        getContentPane().add(lblFalaGenio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
+
+        lblFalaGenio3.setText("entre 0 e 5");
+        getContentPane().add(lblFalaGenio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\inque\\Documents\\NetBeansProjects\\prg03Inque\\src\\main\\java\\br\\com\\ifba\\atividade03\\imgs\\genio01 (1).png")); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(300, 300));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 260, 250));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\inque\\Documents\\NetBeansProjects\\prg03Inque\\src\\main\\java\\br\\com\\ifba\\atividade03\\imgs\\balao02 (1).png")); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 210, -1));
 
-        jButton1.setText("jButton1");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 80, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 80, -1));
+        btnResultado.setText("adivinhar");
+        btnResultado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResultadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 80, -1));
+        getContentPane().add(txttentativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 80, -1));
 
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, 20));
+        lblInfoTentativa.setText("tentativas");
+        getContentPane().add(lblInfoTentativa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
+
+        lblNumTentativas.setText("3");
+        getContentPane().add(lblNumTentativas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 30, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnResultadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResultadoActionPerformed
+        // new
+        Random random = new Random();
+        int num; // Declara a variável num fora do bloco try
+        int numTentativas;
+
+        try {
+            num = Integer.parseInt(txttentativa.getText());//pega o texto(nunmero) digitado
+            numTentativas = Integer.parseInt(lblNumTentativas.getText());
+
+            int numAleatorio = random.nextInt(5);//recebe um random entre 0 e 5
+            
+            if(numTentativas > 0){
+                numTentativas--;
+                lblNumTentativas.setText(String.valueOf(numTentativas)); // Atualiza o label de tentativas na tela
+                // Compara o número escolhido com o número aleatório
+                if (num == numAleatorio) {
+                    lblFalaGenio1.setText("");
+                    lblFalaGenio2.setText("parabens esta");
+                    lblFalaGenio3.setText("correto");
+                    // Opcional:
+                    int resposta = JOptionPane.showConfirmDialog(this, "Você acertou! Deseja jogar novamente?", "Fim de Jogo", JOptionPane.YES_NO_OPTION);
+                    if (resposta == JOptionPane.YES_OPTION) { //reinicia o jogo ou fecha a janela
+                        lblFalaGenio1.setText("vou pensar...");
+                        lblFalaGenio2.setText("em um numero");
+                        lblFalaGenio3.setText("entre 0 e 5");
+                        numTentativas = 3;
+                        lblNumTentativas.setText(String.valueOf(numTentativas));
+                    } else {
+                        this.dispose();
+                    }
+                
+                } else {
+                    lblFalaGenio1.setText("");
+                    lblFalaGenio2.setText("numero errado");
+                    lblFalaGenio3.setText("foi quase");
+                }
+            }else{
+                //reseta todas as informacoes para um novo jogo
+                JOptionPane.showMessageDialog(this, "0 tentativas restantes", "Erro", JOptionPane.ERROR_MESSAGE);
+                numAleatorio = random.nextInt(5);
+                lblFalaGenio1.setText("vou pensar...");
+                lblFalaGenio2.setText("em um numero");
+                lblFalaGenio3.setText("entre 0 e 5");
+                numTentativas = 3;
+                lblNumTentativas.setText(String.valueOf(numTentativas));
+            }
+
+            
+
+        } catch (NumberFormatException e) {
+            // Se ocorrer um erro ao tentar converter o texto para um número
+            JOptionPane.showMessageDialog(this, "Por favor, digite apenas números!", "Erro", JOptionPane.ERROR_MESSAGE);
+            txttentativa.setText(""); // Limpa o campo de texto para o usuário tentar novamente
+            lblFalaGenio2.setText("tente adivinhar"); // Limpa as mensagens anteriores
+            lblFalaGenio3.setText("");
+        }
+        
+    }//GEN-LAST:event_btnResultadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,11 +171,14 @@ public class telaGenio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnResultado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblFalaGenio1;
+    private javax.swing.JLabel lblFalaGenio2;
+    private javax.swing.JLabel lblFalaGenio3;
+    private javax.swing.JLabel lblInfoTentativa;
+    private javax.swing.JLabel lblNumTentativas;
+    private javax.swing.JTextField txttentativa;
     // End of variables declaration//GEN-END:variables
 }
