@@ -145,7 +145,7 @@ public class frameSlider extends javax.swing.JFrame {
         int fim = sldFim.getValue();
         int passo = sldPasso.getValue();
         
-        // Usamos StringBuilder para eficiência na concatenação
+        // Uso do StringBuilder para eficiência na concatenação
         StringBuilder resultado = new StringBuilder();
         int contador = inicio;
         
