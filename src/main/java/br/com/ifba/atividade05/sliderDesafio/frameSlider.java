@@ -139,7 +139,7 @@ public class frameSlider extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        // TODO add your handling code here:
+        
         //new
         int inicio = sldInicio.getValue();
         int fim = sldFim.getValue();
