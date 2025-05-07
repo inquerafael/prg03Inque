@@ -4,6 +4,9 @@
  */
 package br.com.ifba.atividade06.metodos;
 import javax.swing.DefaultListModel; // Importe a classe DefaultListModel
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -11,14 +14,15 @@ import javax.swing.DefaultListModel; // Importe a classe DefaultListModel
  */
 public class frameLista extends javax.swing.JFrame {
 
-    
-    /**
-     * Creates new form frameLista
-     */
+    //intermediador
     DefaultListModel<String> listModel;
+    int index;
+    
     public frameLista() {
         initComponents();
         listModel = new DefaultListModel<>();
+        jList1.setModel(listModel); // Define listModel como o modelo da jList1
+        index = 0;
     }
 
     /**
@@ -36,9 +40,15 @@ public class frameLista extends javax.swing.JFrame {
         btnRemover = new javax.swing.JButton();
         btnOrdenar = new javax.swing.JButton();
         txtNovoNum = new javax.swing.JTextField();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         btnAdicionar.setText("adicionar");
@@ -49,53 +59,83 @@ public class frameLista extends javax.swing.JFrame {
         });
 
         btnRemover.setText("remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
         btnOrdenar.setText("ordenar");
+        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarActionPerformed(evt);
+            }
+        });
+
+        lblTitulo.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblTitulo.setText("Metodos + JList");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(txtNovoNum, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAdicionar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNovoNum)
+                    .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                    .addComponent(btnRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnOrdenar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(62, 62, 62)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(lblTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(lblTitulo)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAdicionar)
-                            .addComponent(txtNovoNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNovoNum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAdicionar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnOrdenar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //adiciona o numero digitado no campo ao jList
     private void adicionar(){
         String textoDigitado = txtNovoNum.getText();
         try {
-            listModel.addElement(textoDigitado);//lista modelo recebe o elemento novoNum como string
-            jList1.setModel(listModel);// depois coloca no modelo do jList
+            listModel.addElement(textoDigitado);//mudancas feitas no modelo refletem automaticamente no Jlist
             txtNovoNum.setText("");//limpa textfild
         } catch (NumberFormatException e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Por favor, digite um número válido.", "Erro", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    //ordena itens da lista
+    private void ordenar(){
+        List<String> listaDeElementos = new ArrayList<>();
+        for (int i = 0; i < listModel.getSize(); i++) {
+            listaDeElementos.add(listModel.getElementAt(i));
+        }
+        Collections.sort(listaDeElementos);
+        listModel.removeAllElements();
+        for (String elemento : listaDeElementos) {
+            listModel.addElement(elemento);
         }
     }
     
@@ -103,6 +143,22 @@ public class frameLista extends javax.swing.JFrame {
         // chamadas de metodos
         adicionar();  
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        //new
+        listModel.remove(index);//remove o dado
+        jList1.setModel(listModel);//reseta a lista
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        //new
+        index = jList1.getSelectedIndex(); //seleciona o indice
+    }//GEN-LAST:event_jList1MouseClicked
+
+    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+        // chamadas de metodos
+        ordenar();
+    }//GEN-LAST:event_btnOrdenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,6 +201,7 @@ public class frameLista extends javax.swing.JFrame {
     private javax.swing.JButton btnRemover;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JTextField txtNovoNum;
     // End of variables declaration//GEN-END:variables
 }
