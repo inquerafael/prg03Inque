@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package br.com.ifba.atividade07.fatorial;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,8 +14,11 @@ public class FrameFatorial extends javax.swing.JFrame {
     /**
      * Creates new form FrameFatorial
      */
-    public FrameFatorial() {
+    private final Fatorial fatorialCalculo;// só pode ser inicializada uma vez (no construtor)
+    
+    public FrameFatorial() {//Cria uma nova instância da classe Fatorial
         initComponents();
+        fatorialCalculo = new Fatorial();//Cria uma nova instância da classe Fatorial
     }
 
     /**
@@ -63,16 +67,16 @@ public class FrameFatorial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(txtEntradaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
-                        .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(lblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtEntradaDados, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(56, 56, 56)
+                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,7 +103,17 @@ public class FrameFatorial extends javax.swing.JFrame {
     }//GEN-LAST:event_txtEntradaDadosActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        // TODO add your handling code here:
+        // new
+        try {
+            int numero = Integer.parseInt(txtEntradaDados.getText());//variavel q vai receber o numero digitado
+            fatorialCalculo.setValor(numero);//chama a instancia da classe e pasa o valor coletado
+            lblResultado.setText(fatorialCalculo.getFormula());//seta em resultado o valor depois da resolucao(getformula)
+        } catch (NumberFormatException e) {
+            //tratamento de erro
+            JOptionPane.showMessageDialog(this, "Por favor, digite um número inteiro válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            lblResultado.setText("");
+        }
+        
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     /**
