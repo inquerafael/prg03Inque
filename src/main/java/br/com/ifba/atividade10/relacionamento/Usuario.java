@@ -17,7 +17,7 @@ public class Usuario {
     private boolean ativo;
     private String email;
 
-    public Usuario(int id, String nomeUsuario, String senha, PerfilUsuario perfilUsuario, String ultimoLogin) {
+    public Usuario(int id, String nomeUsuario, String senha, PerfilUsuario perfilUsuario) {
         this.id = id;
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;

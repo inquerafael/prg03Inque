@@ -25,6 +25,7 @@ public class Banco {
         contaComSaldoInicial.depositar(100.0);
         contaComSaldoInicial.pagarMensal();
         contaDoCarlos.fecharConta();
+        
         contaDoCarlos.depositar(10.0); // Tentativa de depósito em conta fechada
     }
 }

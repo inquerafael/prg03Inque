@@ -37,27 +37,10 @@ public class main {
         Usuario usuarioAdmin = new Usuario(101, "joao.admin", "senha123", adminProfile);
         System.out.println(usuarioAdmin);
 
-        Usuario usuarioNormal = new Usuario(102L, "maria.user", "abc456", userProfile);
+        Usuario usuarioNormal = new Usuario(102, "maria.user", "abc456", userProfile);
         System.out.println(usuarioNormal);
 
-        // 3. Testar o método logar e criar logs de auditoria
-        System.out.println("\n--- Testando logins ---");
-        LogAuditoria log1 = usuarioAdmin.logar("senha123", "192.168.1.100"); // Login de sucesso
-        System.out.println(log1);
-
-        LogAuditoria log2 = usuarioNormal.logar("senhaErrada", "10.0.0.5"); // Login de falha
-        System.out.println(log2);
-
-        LogAuditoria log3 = usuarioNormal.logar("abc456", "10.0.0.5"); // Login de sucesso
-        System.out.println(log3);
-
-        // 4. Testar o método criarSessao
-        System.out.println("\n--- Criando sessões ---");
-        Sessao sessaoAdmin = usuarioAdmin.criarSessao();
-        System.out.println(sessaoAdmin);
-
-        Sessao sessaoNormal = usuarioNormal.criarSessao();
-        System.out.println(sessaoNormal);
+        
 
         System.out.println("\n--- Verificando estado final dos usuários ---");
         System.out.println(usuarioAdmin);
