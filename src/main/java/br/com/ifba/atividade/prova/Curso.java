@@ -13,7 +13,7 @@ public class Curso {
     private String nome;
     private String codCurso;
     //relacoes
-    private Servidor servidor;
+    private Servidor cordenador;
     private Turma turma;
 
     public String getNome() {

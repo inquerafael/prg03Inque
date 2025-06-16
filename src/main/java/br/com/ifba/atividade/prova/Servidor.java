@@ -8,7 +8,7 @@ package br.com.ifba.atividade.prova;
  *
  * @author inque
  */
-public class Servidor extends Pessoa{
+public abstract class Servidor extends Pessoa{
     private String siape;
 
     

@@ -6,6 +6,7 @@ package br.com.ifba.atividade.prova;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -15,10 +16,27 @@ public class Turma {
     //atributos
     private String noome;
     private int anoLetivo;
+    private int maxAlunos = (int) (Math.random() * 50) + 1;
+    Random rand = new Random();
+    
     //relacao
     private List<Aluno> alunos = new ArrayList();
 
-    
+    //metodos
+    public void setRandAlunos() {
+        Random rand = new Random();
+        this.maxAlunos = rand.nextInt(50)+1;
+    }
+    public void addAluno(){
+        
+    }
+    public void removerAluno(){
+        
+    }
+    public void turmaAtiva(){
+        
+    }
+
     //gets e sets
     public String getNoome() {
         return noome;
