@@ -17,6 +17,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "cursos")
 public class Curso {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -30,12 +31,7 @@ public class Curso {
     @Column(name = "Ativo")
     private boolean ativo;
 
-    public Curso(long id, String nome, String codCurso, boolean ativo) {
-        this.id = id;
-        this.nome = nome;
-        this.codCurso = codCurso;
-        this.ativo = ativo;
-    }
+   
     //tostring
 
     @Override
