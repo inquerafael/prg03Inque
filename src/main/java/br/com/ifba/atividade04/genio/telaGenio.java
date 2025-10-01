@@ -33,8 +33,8 @@ public class telaGenio extends javax.swing.JFrame {
         lblFalaGenio1 = new javax.swing.JLabel();
         lblFalaGenio2 = new javax.swing.JLabel();
         lblFalaGenio3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblImage = new javax.swing.JLabel();
+        lblBalao = new javax.swing.JLabel();
         btnResultado = new javax.swing.JButton();
         txttentativa = new javax.swing.JTextField();
         lblInfoTentativa = new javax.swing.JLabel();
@@ -44,20 +44,20 @@ public class telaGenio extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblFalaGenio1.setText("vou pensar...");
-        getContentPane().add(lblFalaGenio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, -1, -1));
+        getContentPane().add(lblFalaGenio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
 
         lblFalaGenio2.setText("em um numero");
-        getContentPane().add(lblFalaGenio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
+        getContentPane().add(lblFalaGenio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
 
         lblFalaGenio3.setText("entre 0 e 5");
-        getContentPane().add(lblFalaGenio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, -1, -1));
+        getContentPane().add(lblFalaGenio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\inque\\Documents\\NetBeansProjects\\prg03Inque\\src\\main\\java\\br\\com\\ifba\\atividade03\\imgs\\genio01 (1).png")); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(300, 300));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 260, 250));
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/curso/img/Akinator - Blog do Nel (1).png"))); // NOI18N
+        lblImage.setPreferredSize(new java.awt.Dimension(300, 300));
+        getContentPane().add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 260, 250));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\inque\\Documents\\NetBeansProjects\\prg03Inque\\src\\main\\java\\br\\com\\ifba\\atividade03\\imgs\\balao02 (1).png")); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 210, -1));
+        lblBalao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/curso/img/balao2 (1).png"))); // NOI18N
+        getContentPane().add(lblBalao, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 240, 140));
 
         btnResultado.setText("adivinhar");
         btnResultado.addActionListener(new java.awt.event.ActionListener() {
@@ -173,11 +173,11 @@ public class telaGenio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnResultado;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblBalao;
     private javax.swing.JLabel lblFalaGenio1;
     private javax.swing.JLabel lblFalaGenio2;
     private javax.swing.JLabel lblFalaGenio3;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblInfoTentativa;
     private javax.swing.JLabel lblNumTentativas;
     private javax.swing.JTextField txttentativa;
